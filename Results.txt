@@ -1,0 +1,94 @@
+Microsoft Windows [Version 10.0.17134.228]
+(c) 2018 Microsoft Corporation. All rights reserved.
+
+C:\WINDOWS\system32>python
+Python 3.7.0 (v3.7.0:1bf9cc5093, Jun 27 2018, 04:59:51) [MSC v.1914 64 bit (AMD64)] on win32
+Type "help", "copyright", "credits" or "license" for more information.
+>>> # 1. Ensuring that all pre-made algorithms were properly installled and up to date
+>>> # Python version
+... import sys
+>>> print('Python: {}'.format(sys.version))
+Python: 3.7.0 (v3.7.0:1bf9cc5093, Jun 27 2018, 04:59:51) [MSC v.1914 64 bit (AMD64)]
+>>> # SciPy version
+... import scipy
+>>> print('scipy: {}'.format(scipy.__version__))
+scipy: 1.1.0
+>>> # NumPy version
+... import numpy
+>>> print('numpy: {}'.format(numpy.__version__))
+numpy: 1.15.1
+>>> # matplotlib version
+... import matplotlib
+>>> print('matplotlib: {}'.format(matplotlib.__version__))
+matplotlib: 2.2.3
+>>> # pandas version
+... import pandas
+>>> print('pandas: {}'.format(pandas.__version__))
+pandas: 0.23.4
+>>> # scikit-learn version
+... import sklearn
+>>> print('sklearn: {}'.format(sklearn.__version__))
+sklearn: 0.19.2
+>>>
+>>>
+>>> # 2. Importing the libaries that will be used in this program
+... import pandas
+>>> from pandas.plotting import scatter_matrix
+>>> import matplotlib.pyplot as plt
+>>> from sklearn import model_selection
+>>> from sklearn.metrics import classification_report
+>>> from sklearn.metrics import confusion_matrix
+>>> from sklearn.metrics import accuracy_score
+>>> from sklearn.linear_model import LogisticRegression
+>>> from sklearn.tree import DecisionTreeClassifier
+>>> from sklearn.neighbors import KNeighborsClassifier
+>>> from sklearn.discriminant_analysis import LinearDiscriminantAnalysis
+>>> from sklearn.naive_bayes import GaussianNB
+>>> from sklearn.svm import SVC
+>>>
+>>>
+>>> # 3. Pulling the dataset regarding avocados and labeling them
+... url = "C:/pythonprojects/avocado.csv"
+>>> names = ['AveragePrice', 'TotalVolume', 'Year']
+>>> dataset = pandas.read_csv(url, names=names)
+>>>
+>>>
+>>> # 3.1. Number of rows and columns within the dataset
+... print(dataset.shape)
+(18250, 3)
+>>>
+>>>
+>>> # 3.2. Preview of the first 20 entries within the dataset 
+... print(dataset.head(20))
+    AveragePrice  TotalVolume  Year
+0   AveragePrice  TotalVolume  Year
+1           1.33     64236.62  2015
+2           1.35     54876.98  2015
+3           0.93    118220.22  2015
+4           1.08     78992.15  2015
+5           1.28      51039.6  2015
+6           1.26     55979.78  2015
+7           0.99     83453.76  2015
+8           0.98    109428.33  2015
+9           1.02     99811.42  2015
+10          1.07     74338.76  2015
+11          1.12     84843.44  2015
+12          1.28     64489.17  2015
+13          1.31      61007.1  2015
+14          0.99    106803.39  2015
+15          1.33     69759.01  2015
+16          1.28     76111.27  2015
+17          1.11     99172.96  2015
+18          1.07    105693.84  2015
+19          1.34     79992.09  2015
+>>>
+>>>
+>>> # 3.3 Statistical summary of the dataset
+... print(dataset.describe())
+       AveragePrice TotalVolume   Year
+count         18250       18250  18250
+unique          260       18238      5
+top            1.15     7223.46   2017
+freq            202           2   5722
+>>>
+>>>
